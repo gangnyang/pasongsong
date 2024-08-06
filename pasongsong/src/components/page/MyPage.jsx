@@ -1,9 +1,10 @@
 import {React, useState} from "react";
 import styled, {keyframes} from "styled-components";
-import useNavigate from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import TextButton from "../ui/TextButton.jsx";
 import ImageButton from "../ui/ImageButton.jsx";
 import HiddenContainer from "../container/HiddenContainer.jsx";
+import ImageButtonNohover from "../ui/ImageButton_nohover.jsx";
 
 const Wrapper = styled.div `
     width: 100%;
@@ -16,23 +17,28 @@ const Wrapper = styled.div `
 
 const TopBar = styled.div `
     width: 100%;
-    height: 80px;
-    background-color: transparent;
+    height: 120px;
+    background-color: grey;
     display: flex;
     flex-direction: row;
-    align-items:center;
-    justify-content: flex-end; 
+    align-items:start;
+    justify-content: flex-start; 
     position:relative;
-    padding-right: 3%;
     z-index:1;
+    padding-left: 8%;
+    padding-top:1%;
 `;
 
 const ButtonWrapper = styled.div `
-    position: relative;
+    position: fixed;
+    top:0;
+    right:0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 1.5%;
+    padding-top: 2.5%;
+    padding-right: 2.5%;
+    z-index:10;
 `;
 
 function MyPage(props) {
@@ -49,7 +55,8 @@ function MyPage(props) {
 
     const [img1] = useState('/images/circle.png');
     const [img2, setImg2] = useState('/images/dot.png');
-    const [logo] = useState('/images/pasongsong-logo-transparent');
+    const [logo] = useState('/images/pasongsong-logo-transparent.png');
+    const navigate = useNavigate();
 
     const handleImageChange = () => {
         if (img2 === '/images/dot.png') {
@@ -67,7 +74,17 @@ function MyPage(props) {
     return (
         <Wrapper>
             <TopBar>
-                <ButtonWrapper>
+                <ImageButtonNohover
+                    image={logo}
+                    width='150'
+                    height='60'
+                    onClick={() => {
+                        navigate('/main-page');
+                    }}
+                    zindex='5'/>
+            </TopBar>
+            
+            <ButtonWrapper>
                     <ImageButton
                         image={img1}
                         width='40'
@@ -75,14 +92,7 @@ function MyPage(props) {
                         onClick={handleButtonClick}
                         zindex='15'/>
                     <ImageButton image={img2} width='30' height='30' zindex='10'/>
-                    <ImageButton
-                        image={logo}
-                        width='150'
-                        height='60'
-                        onClick={navigate('/main-page')}
-                        zindex='15'/>
                 </ButtonWrapper>
-            </TopBar>
             <HiddenContainer show={showContainer}/>
         </Wrapper>
     )

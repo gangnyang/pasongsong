@@ -26,6 +26,7 @@ const StyledHiddenContainer = styled.div `
     background-color: lightgreen;
     position: fixed;
     right: 0;
+    z-index:1;
     clip-path: inset(0% 0% 100% 100% round 0 0 0 50%);
     animation: ${props => {
         if (props.show === 2) return 'none';

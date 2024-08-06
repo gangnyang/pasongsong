@@ -1,13 +1,20 @@
 import './App.css';
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
+import styled from "styled-components";
 import {
   BrowserRouter,
   Routes,
   Route 
 } from "react-router-dom";
 import MyPage from './components/page/MyPage.jsx';
+import MainPage from  './components/page/MainPage.jsx';
 
+const MainTitleText = styled.p`
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+`;
 
 function App() {
   const sendRequest = async() => {
@@ -23,7 +30,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <MainTitleText>Pasongsong</MainTitleText>
         <Routes>
           <Route index element = {<MyPage/>} />
           <Route path="main-page" element = {<MainPage/>} />
