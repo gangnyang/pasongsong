@@ -1,5 +1,6 @@
 import {React, useState} from "react";
 import styled, {keyframes} from "styled-components";
+import useNavigate from "react-router-dom";
 import TextButton from "../ui/TextButton.jsx";
 import ImageButton from "../ui/ImageButton.jsx";
 import HiddenContainer from "../container/HiddenContainer.jsx";
@@ -48,6 +49,7 @@ function MyPage(props) {
 
     const [img1] = useState('/images/circle.png');
     const [img2, setImg2] = useState('/images/dot.png');
+    const [logo] = useState('/images/pasongsong-logo-transparent');
 
     const handleImageChange = () => {
         if (img2 === '/images/dot.png') {
@@ -73,6 +75,12 @@ function MyPage(props) {
                         onClick={handleButtonClick}
                         zindex='15'/>
                     <ImageButton image={img2} width='30' height='30' zindex='10'/>
+                    <ImageButton
+                        image={logo}
+                        width='150'
+                        height='60'
+                        onClick={navigate('/main-page')}
+                        zindex='15'/>
                 </ButtonWrapper>
             </TopBar>
             <HiddenContainer show={showContainer}/>

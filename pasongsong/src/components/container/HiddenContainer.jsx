@@ -30,7 +30,7 @@ const StyledHiddenContainer = styled.div `
     animation: ${props => {
         if (props.show === 2) return 'none';
         return props.show === 1 ? slideIn : slideOut;
-    }} 1.2s forwards;
+    }} 0.8s forwards;
 `;
 
 const HiddenContainer = ({show}) => {

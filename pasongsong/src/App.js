@@ -1,6 +1,11 @@
 import './App.css';
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route 
+} from "react-router-dom";
 import MyPage from './components/page/MyPage.jsx';
 
 
@@ -17,7 +22,13 @@ function App() {
 
   return (
     <div className="App">
-      <MyPage/>
+      <BrowserRouter>
+        <MainTitleText>Pasongsong</MainTitleText>
+        <Routes>
+          <Route index element = {<MyPage/>} />
+          <Route path="main-page" element = {<MainPage/>} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
